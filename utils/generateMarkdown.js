@@ -2,16 +2,16 @@
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   let badge = "";
-  if(license === "None") {
-    return "";
-  } else if (license === "MIT") {
-    badge = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
-  } else if (license === "Apache 2.0") {
-    badge = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
-  } else if (license === "Perl") {
-    badge = "[![License: Artistic-2.0](https://img.shields.io/badge/License-Perl-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)"
-  }
-  return badge;
+    if (license == "MIT") {
+      badge = "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+      } else if (license == "Apache 2.0") {
+      badge = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
+      } else if (license == "Perl") {
+      badge = "[![License: Artistic-2.0](https://img.shields.io/badge/License-Perl-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)";
+      }else if (license == "None") {
+        badge = "";
+      }
+      return badge;
 };
 
 // TODO: Create a function that returns the license link
@@ -44,11 +44,11 @@ ${renderLicenseBadge(data.license)}
 
 ## Table of Contents
 - [Installation](#installation)
-- [Technologies Used](#technologies)
-- [How to use the Application](#usage)
+- [Built With](#built-with)
+- [How to use the Application](#how-to-use-the-application)
 - [Credits](#credits)
-- [Contributions](#contributing)
-- [Tests](#test)
+- [Contributions](#contributions)
+- [Tests](#tests)
 - [Questions](#questions)
 
 ## Installation
