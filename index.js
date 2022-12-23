@@ -14,29 +14,37 @@ const questions = [
         name: "description"
     },
     {   type: "input",
-        message: "Please list any installation steps for your project:",
+        message: "List any installation steps for your project:",
         name: "installation"
     },
     {   type: "input",
-        message: "How do you navigate your project?",
+        message: "List instructions to navigate your application",
         name: "usage"
     },
     {   type: "input",
-        message: "List all contributors to your project",
-        name: "contributors"
+        message: "List any Credits to your project:",
+        name: "credits"
+    },
+    {   type: "input",
+        message: "Are there guidelines to contribute to this project?",
+        name: "contributing"
+    },
+    {   type: "input",
+        message: "What languages did you use to build your project?",
+        name: "technologies"
     },
     {   type: "input",
         message: "List any test instructions for your project:",
         name: "test"
     },
-    {   type: "input",
-        message: "What is your GitHub username?",
-        name: "username"
-    },
     {   type: "checkbox",
         message: "Choose your license:",
         name: "license",
         choices: ["MIT", "Apache 2.0", "Perl", "None"]
+    },
+    {   type: "input",
+        message: "What is your GitHub username?",
+        name: "username"
     },
     {   type: "input",
         message: "What is your email address?",
@@ -47,22 +55,17 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile("README.md",generateMarkdown(responses), err =>{
-        if (err){
-            console.log(err)
-        }
-    })
+    fs.writeFile(fileName, data, err => {
+        err ? console.log(err)
+        : console.log("File written successfully");
+    });
 }
 
-// TODO: Create a function to initialize app
+// // TODO: Create a function to initialize app
 function init() {
-    inquirer
-        .prompt(questions)
-        .then(respones => {
-         
-        
-    })
-
+    inquirer.prompt(questions).then((responses) => {
+        writeToFile("README.md", generateMarkdown(responses));
+    });
 }
 
 // Function call to initialize app
