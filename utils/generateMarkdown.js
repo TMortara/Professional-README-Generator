@@ -8,7 +8,9 @@ function renderLicenseBadge(license) {
       badge = "[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
       } else if (license == "Perl") {
       badge = "[![License: Artistic-2.0](https://img.shields.io/badge/License-Perl-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)";
-      }else if (license == "None") {
+      } else if (license = "Eclipse Public License 1.0") {
+      badge = "[![License](https://img.shields.io/badge/License-EPL%201.0-red.svg)](https://opensource.org/licenses/EPL-1.0)";
+      } else if (license == "None") {
         badge = "";
       }
       return badge;
@@ -36,16 +38,16 @@ function renderLicenseSection(license) {
 function generateMarkdown(data) {
   return `
 # ${data.title}
+${renderLicenseBadge(data.license)}
+
 ## Description
 ${data.description}
-
-${renderLicenseSection(data.license)}
-${renderLicenseBadge(data.license)}
 
 ## Table of Contents
 - [Installation](#installation)
 - [Built With](#built-with)
 - [How to use the Application](#how-to-use-the-application)
+- [License](#license)
 - [Credits](#credits)
 - [Contributions](#contributions)
 - [Tests](#tests)
@@ -60,14 +62,17 @@ ${data.technologies}
 ## How to use the Application
 ${data.usage}
 
+${renderLicenseSection(data.license)}
+
 ## Credits
 ${data.credits}
 
 ## Contributions
-${data.contributions}
+### Below are guidelines on how you can contribute to this project: 
+${data.contributing}
 
 ## Tests
-${data.tests}
+${data.test}
 
 ## Questions
 ### Contact Information

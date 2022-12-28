@@ -7,7 +7,13 @@ const generateMarkdown = require("./utils/generateMarkdown");
 const questions = [
     {   type: "input",
         message: "What is the title of your project?",
-        name: "title"
+        name: "title",
+        validate: function (answer) {
+            if (answer == "") {
+                return console.log("You must add a title for your project.");
+            } 
+            return true;
+        }
     },
     {   type: "input",
         message: "What is the description of your project?",
@@ -18,7 +24,7 @@ const questions = [
         name: "installation"
     },
     {   type: "input",
-        message: "List instructions to navigate your application",
+        message: "List instructions on how to use your application:",
         name: "usage"
     },
     {   type: "input",
@@ -40,7 +46,7 @@ const questions = [
     {   type: "list",
         message: "Choose your license:",
         name: "license",
-        choices: ["MIT", "Apache 2.0", "Perl", "None"]
+        choices: ["MIT", "Apache 2.0", "Perl", "Eclipse Public License 1.0", "None"]
     },
     {   type: "input",
         message: "What is your GitHub username?",
