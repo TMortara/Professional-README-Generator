@@ -1,19 +1,13 @@
-// TODO: Include packages needed for this application
+// Required packages
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generateMarkdown = require("./utils/generateMarkdown");
 
-// TODO: Create an array of questions for user input
+// Array of Questions to prompt user
 const questions = [
     {   type: "input",
         message: "What is the title of your project?",
         name: "title",
-        validate: function (answer) {
-            if (answer == "") {
-                return console.log("You must add a title for your project.");
-            } 
-            return true;
-        }
     },
     {   type: "input",
         message: "What is the description of your project?",
@@ -46,7 +40,7 @@ const questions = [
     {   type: "list",
         message: "Choose your license:",
         name: "license",
-        choices: ["MIT", "Apache 2.0", "Perl", "Eclipse Public License 1.0", "None"]
+        choices: ["MIT", "Apache 2.0", "Perl", "Eclipse Public License 1.0","None"]
     },
     {   type: "input",
         message: "What is your GitHub username?",
@@ -55,11 +49,10 @@ const questions = [
     {   type: "input",
         message: "What is your email address?",
         name: "email"
-        // validate:
     }
 ];
 
-// TODO: Create a function to write README file
+// Function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, err => {
         err ? console.log(err)
@@ -67,12 +60,11 @@ function writeToFile(fileName, data) {
     });
 }
 
-// // TODO: Create a function to initialize app
+// // Function to initialize app
 function init() {
     inquirer.prompt(questions).then((responses) => {
         writeToFile("SampleREADME.md", generateMarkdown(responses));
     });
 }
 
-// Function call to initialize app
 init();
